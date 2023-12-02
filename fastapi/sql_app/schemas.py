@@ -55,7 +55,7 @@ class StudentCreate(StudentBase):
 
 class Student(StudentBase):
     id: int
-    is_active: bool
+    is_active: bool = True
     subjects: list[Subject] = []
 
     class Config:
