@@ -18,7 +18,7 @@ class Homework(HomeworkBase):
     subject_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # Subject
@@ -78,4 +78,4 @@ class Teacher(TeacherBase):
     subjects: list[Subject] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
