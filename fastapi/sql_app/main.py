@@ -1,9 +1,17 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
+import logging
+
+from starlette.responses import HTMLResponse
 
 from . import crud, models, schemas
+from .connection_manager import ConnectionManager
+from .base_page import html
 from .database import SessionLocal, engine
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("FastAPI app")
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -22,7 +30,7 @@ app.add_middleware(
 )
 
 
-# Dependency
+# DB connect
 def get_db():
     db = SessionLocal()
     try:
@@ -30,6 +38,34 @@ def get_db():
     finally:
         db.close()
 
+
+# WebSocket
+
+manager = ConnectionManager()
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    # Accept the connection from a client.
+    await manager.connect(websocket)
+
+    try:
+        while True:
+            # Receive the JSON data sent by a client.
+            data = await websocket.receive_json()
+            message_processed = data.get("message", "").upper()
+            # Send JSON data to the client.
+            await websocket.send_json(
+                {
+                    "message": message_processed,
+                }
+            )
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+        logger.info("The connection is closed.")
+
+
+# RestAPI
 
 # Homework
 @app.get("/homeworks/{homework_id}", response_model=list[schemas.Homework])

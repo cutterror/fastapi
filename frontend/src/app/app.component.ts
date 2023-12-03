@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { HelloService } from './services/hello.service';
+import { Component, OnDestroy } from '@angular/core';
+import { WebSocketService } from './services/web-socket.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    title = 'frontend';
+export class AppComponent implements OnDestroy {
+    public message = '';
 
-    constructor(
-        private helloService: HelloService
-    ) {
+    constructor(public webSocketService: WebSocketService) {
+        this.webSocketService.connect();
     }
 
-    ngOnInit() {
-        this.helloService.getHello().subscribe((response) => {
-            console.log(response);
-        });
+    sendMessage(message: string) {
+        this.webSocketService.sendMessage(message);
     }
+
+    ngOnDestroy() {
+        this.webSocketService.close();
+    }
+
 }
