@@ -12,7 +12,6 @@ interface MessageData {
 export class WebSocketService {
     private socket$!: WebSocketSubject<any>;
     public receivedData: MessageData[] = [];
-    public readonly url: string = 'http://127.0.0.1:8000';
 
     constructor(
         protected http: HttpClient

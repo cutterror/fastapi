@@ -117,7 +117,7 @@ def read_student(student_id: int, db: Session = Depends(get_db)):
     return db_student
 
 
-@app.get("students/", response_model=list[schemas.Student])
+@app.get("/students/", response_model=list[schemas.Student])
 def read_students(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     students = crud.get_students(db, skip=skip, limit=limit)
     return students
@@ -132,7 +132,7 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
 
 
 # Teacher
-@app.get("teachers/{teacher_id}", response_model=schemas.Teacher)
+@app.get("/teachers/{teacher_id}", response_model=schemas.Teacher)
 def read_teacher(teacher_id: int, db: Session = Depends(get_db)):
     db_teacher = crud.get_teacher(db, teacher_id=teacher_id)
     if db_teacher is None:
@@ -140,7 +140,7 @@ def read_teacher(teacher_id: int, db: Session = Depends(get_db)):
     return db_teacher
 
 
-@app.get("teachers/", response_model=list[schemas.Teacher])
+@app.get("/teachers/", response_model=list[schemas.Teacher])
 def read_teachers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     teachers = crud.get_teachers(db, skip=skip, limit=limit)
     return teachers

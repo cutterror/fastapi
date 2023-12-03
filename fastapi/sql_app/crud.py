@@ -69,7 +69,7 @@ def get_teachers(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_teacher(db: Session, teacher: schemas.TeacherCreate):
-    db_teacher = models.Student(**teacher.dict())
+    db_teacher = models.Teacher(**teacher.dict())
     db.add(db_teacher)
     db.commit()
     db.refresh(db_teacher)
