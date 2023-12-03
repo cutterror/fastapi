@@ -32,6 +32,13 @@ def update_homework(db: Session, homework_id: int, homework: schemas.HomeworkCre
     return updated_homework
 
 
+def delete_homework(db: Session, homework_id: int):
+    db_homework = db.query(models.Homework).get(homework_id)
+    db.delete(db_homework)
+    db.commit()
+    return db_homework
+
+
 # Subject
 def get_subject(db: Session, subject_id: int):
     return db.query(models.Subject).filter(models.Subject.id == subject_id).first()
@@ -59,6 +66,13 @@ def update_subject(db: Session, subject_id: int, subject: schemas.SubjectCreate)
     db.commit()
     db.refresh(updated_subject)
     return updated_subject
+
+
+def delete_subject(db: Session, subject_id: int):
+    db_subject = db.query(models.Subject).get(subject_id)
+    db.delete(db_subject)
+    db.commit()
+    return db_subject
 
 
 # Student
@@ -94,6 +108,13 @@ def update_student(db: Session, student_id: int, student: schemas.StudentCreate)
     return updated_student
 
 
+def delete_student(db: Session, student_id: int):
+    db_student = db.query(models.Student).get(student_id)
+    db.delete(db_student)
+    db.commit()
+    return db_student
+
+
 # Teacher
 def get_teacher(db: Session, teacher_id: int):
     return db.query(models.Teacher).filter(models.Teacher.id == teacher_id).first()
@@ -120,3 +141,10 @@ def update_teacher(db: Session, teacher_id: int, teacher: schemas.TeacherCreate)
     db.commit()
     db.refresh(updated_teacher)
     return updated_teacher
+
+
+def delete_teacher(db: Session, teacher_id: int):
+    db_teacher = db.query(models.Teacher).get(teacher_id)
+    db.delete(db_teacher)
+    db.commit()
+    return db_teacher
