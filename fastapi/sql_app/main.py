@@ -3,11 +3,8 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 import logging
 
-from starlette.responses import HTMLResponse
-
 from . import crud, models, schemas
 from .connection_manager import ConnectionManager
-from .base_page import html
 from .database import SessionLocal, engine
 
 logging.basicConfig(level=logging.INFO)
