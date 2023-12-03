@@ -86,6 +86,11 @@ def create_subject_homework(
     return crud.create_subject_homework(db=db, homework=homework, subject_id=subject_id)
 
 
+@app.put("/homeworks/{homework_id}", response_model=schemas.Homework)
+def update_homework(homework_id: int, homework: schemas.HomeworkCreate, db: Session = Depends(get_db)):
+    return crud.update_homework(db=db, homework_id=homework_id, homework=homework)
+
+
 # Subject
 @app.get("/subjects/{subject_id}", response_model=schemas.Subject)
 def read_subject(subject_id: int, db: Session = Depends(get_db)):
@@ -106,6 +111,11 @@ def create_subject_for_student(
     student_id: int, teacher_id: int, subject: schemas.SubjectCreate, db: Session = Depends(get_db)
 ):
     return crud.create_student_teacher_subject(db=db, subject=subject, student_id=student_id, teacher_id=teacher_id)
+
+
+@app.put("/subjects/{subject_id}", response_model=schemas.Subject)
+def update_subject(subject_id: int, subject: schemas.SubjectCreate, db: Session = Depends(get_db)):
+    return crud.update_subject(db=db, subject_id=subject_id, subject=subject)
 
 
 # Student
@@ -131,6 +141,11 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
     return crud.create_student(db=db, student=student)
 
 
+@app.put("/students/{student_id}", response_model=schemas.Student)
+def update_student(student_id: int, student: schemas.StudentCreate, db: Session = Depends(get_db)):
+    return crud.update_student(db=db, student_id=student_id, student=student)
+
+
 # Teacher
 @app.get("/teachers/{teacher_id}", response_model=schemas.Teacher)
 def read_teacher(teacher_id: int, db: Session = Depends(get_db)):
@@ -149,3 +164,8 @@ def read_teachers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 @app.post("/teachers/", response_model=schemas.Teacher)
 def create_teacher(teacher: schemas.TeacherCreate, db: Session = Depends(get_db)):
     return crud.create_teacher(db=db, teacher=teacher)
+
+
+@app.put("/teachers/{teacher_id}", response_model=schemas.Teacher)
+def update_teacher(teacher_id: int, teacher: schemas.TeacherCreate, db: Session = Depends(get_db)):
+    return crud.update_teacher(db=db, teacher_id=teacher_id, teacher=teacher)
