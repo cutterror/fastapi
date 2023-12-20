@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+}
+
+:active, :hover, :focus {
+    outline: 0;
+}
+
+/*taiga vars*/
+:root {
+    --tui-base-01: #081012;
+}

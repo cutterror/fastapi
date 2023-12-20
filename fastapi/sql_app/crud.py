@@ -101,7 +101,7 @@ def update_student(db: Session, student_id: int, student: schemas.StudentCreate)
     updated_student: models.Student = db.query(models.Student).get(student_id)
     updated_student.email = student.email
     updated_student.name = student.name
-    updated_student.hashed_password = student.password
+    updated_student.hashed_password = student.password + "notreallyhashed"
     db.add(updated_student)
     db.commit()
     db.refresh(updated_student)

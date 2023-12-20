@@ -46,14 +46,14 @@ class Subject(SubjectBase):
 # Student
 class StudentBase(BaseModel):
     email: str
-    name: str
-
-
-class StudentCreate(StudentBase):
     password: str
 
 
-class Student(StudentBase):
+class StudentCreate(StudentBase):
+    name: str
+
+
+class Student(StudentCreate):
     id: int
     is_active: bool = True
     subjects: list[Subject] = []

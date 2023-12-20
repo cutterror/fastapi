@@ -6,6 +6,8 @@ import { WebSocketService } from './services/web-socket.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
+import { RouterOutlet } from '@angular/router';
+import { TuiModeModule, TuiRootModule } from '@taiga-ui/core';
 
 const components = [
     AppComponent,
@@ -19,7 +21,10 @@ const components = [
     imports: [
         HttpClientModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        RouterOutlet,
+        TuiRootModule,
+        TuiModeModule
     ],
     providers: [
         WebSocketService
