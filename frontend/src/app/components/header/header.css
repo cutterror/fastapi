@@ -1,0 +1,28 @@
+.container {
+    background-color: var(--tui-base-01);
+    border-radius: 15px;
+    width: 100%;
+    margin: 10px auto;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: #fff;
+}
+
+.content {
+    padding: 10px 20px 7px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content * {
+    display: block;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+.sign-out-button {
+    padding-bottom: 3px;
+    font-size: 18px;
+    font-weight: 500;
+}

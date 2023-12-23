@@ -53,7 +53,7 @@ class StudentCreate(StudentBase):
     password: str
 
 
-class StudentLogIn(BaseModel):
+class StudentSignIn(BaseModel):
     email: str
     password: str
 

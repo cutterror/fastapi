@@ -154,7 +154,7 @@ def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)
 
 
 @app.post("/student/signin", response_model=schemas.Student)
-def login_student(student: schemas.StudentLogIn, db: Session = Depends(get_db)):
+def login_student(student: schemas.StudentSignIn, db: Session = Depends(get_db)):
     db_student = crud.get_student_by_email(db, email=student.email)
     if not db_student:
         raise HTTPException(status_code=400, detail="Аккаунта с данным email не существует")

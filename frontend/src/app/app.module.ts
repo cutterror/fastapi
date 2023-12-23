@@ -11,11 +11,15 @@ import { TuiErrorModule, TuiModeModule, TuiRootModule, TuiTextfieldControllerMod
 import { AuthComponent } from './components/auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TuiInputModule } from '@taiga-ui/kit';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const components = [
     AppComponent,
     SubjectsListComponent,
-    AuthComponent
+    AuthComponent,
+    HomeComponent,
+    HeaderComponent
 ]
 
 @NgModule({

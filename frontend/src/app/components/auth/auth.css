@@ -1,13 +1,13 @@
 .modal-container {
     width: 350px;
     padding: 30px;
-    background-color: white;
+    background-color: var(--tui-base-01);
     position: fixed;
     left: calc(50% - 185px);
     top: 270px;
     border-radius: 15px;
     font-family: 'Alegreya Sans SC', sans-serif;
-    color: #081012;
+    color: #fff;
 }
 
 h1 {
@@ -24,7 +24,7 @@ button {
 }
 
 .primary-button {
-    background-color: #488dc0;
+    background-color: #408fb4;
     border-radius: 10px;
     font-weight: 500;
     color: #fff;
@@ -33,27 +33,27 @@ button {
 }
 
 .primary-button:hover {
-    background-color: #4e95cb;
+    background-color: #55a2c5;
 }
 
 .primary-button:active {
-    background-color: #2e6f9d;
+    background-color: #2d7b9f;
 }
 
 .second-button {
     margin-top: 30px;
     background: none;
-    color: #1f5b81;
+    color: #ffffff;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .second-button:hover {
-    color: #397aa6;
+    color: #caeefd;
 }
 
 .second-button:active {
-    color: #1a5073;
+    color: #9ed7fc;
 }
 
 form {
@@ -66,6 +66,6 @@ form tui-input {
 
 .error {
     margin-top: 8px;
-    color: firebrick;
+    color: #f55e7b;
     font-size: 16px;
 }

@@ -1,11 +1,38 @@
 /*taiga vars*/
 :root {
-    --tui-base-01: #081012;
+    --tui-base-01: #323e53;
+    --tui-base-02: #3f4c64;
+    --tui-autofill: #4d5a75;
+    --tui-base-03: #5b6c85;
+    --tui-base-04: #707e96;
+    --tui-base-05: #8b98af;
+    --tui-base-06: #a5b2c4;
+    --tui-base-07: #c0c7d3;
+    --tui-base-08: #dce1e8;
+    --tui-base-09: #ffffff;
+
+    --tui-text-01: #fff;
+    --tui-text-02: #fff;
+    --tui-text-03: #fff;
+
+    --tui-text-01-night: #323e53;
+    --tui-text-02-night: #323e53;
+    --tui-text-03-night: #323e53;
+
+    --tui-primary-text: #323e53;
+    --tui-secondary: #3b485e;
+    --tui-secondary-hover: #4f5d75;
+    --tui-secondary-active: #67758f;
+
+    --tui-error-fill: rgb(152, 10, 39);
+
+    --tui-elevation-01: #323e53;
+    --tui-elevation-02: #323e53;
 }
 
 body {
     margin: 0;
-    background-color: #081012 !important;
+    background-color: #100e15 !important;
 }
 
 a {
@@ -21,6 +48,7 @@ p, h1, h2, h3, h4, h5 {
 li {
     list-style-type: none;
 }
+
 ul {
     margin: 0;
     padding: 0;
@@ -32,4 +60,19 @@ img {
 
 :active, :hover, :focus {
     outline: 0;
+}
+
+button {
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #c9dde8;
+}
+
+button:active {
+    color: #92b8cc;
 }
