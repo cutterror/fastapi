@@ -1,9 +1,52 @@
 <div class="modal-container">
     <div class="fields">
         <h1>{{title}}</h1>
-        <form>
-
+        <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+        <form *ngIf="isSignIn; else signUp" [formGroup]="signInForm">
+            <tui-input formControlName="email" [tuiTextfieldSize]="inputSize">
+                Email
+                <input
+                        tuiTextfield
+                        type="email"
+                        id="student_email"
+                />
+            </tui-input>
+            <tui-input formControlName="password" [tuiTextfieldSize]="inputSize">
+                Пароль
+                <input
+                        tuiTextfield
+                        type="password"
+                        id="student_password"
+                />
+            </tui-input>
         </form>
     </div>
-    <button (click)="toggleForm()">{{buttonText}}</button>
+    <button class="second-button" (click)="toggleForm()">{{buttonText}}</button>
+    <button class="primary-button" (click)="submitForm()">{{title}}</button>
 </div>
+
+<ng-template #signUp>
+    <form [formGroup]="signUpForm">
+        <tui-input formControlName="name" [tuiTextfieldSize]="inputSize">
+            Ваше имя
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="email" [tuiTextfieldSize]="inputSize">
+            Email
+            <input
+                    tuiTextfield
+                    type="email"
+            />
+        </tui-input>
+        <tui-input formControlName="password" [tuiTextfieldSize]="inputSize">
+            Пароль
+            <input
+                    tuiTextfield
+                    type="password"
+            />
+        </tui-input>
+    </form>
+</ng-template>

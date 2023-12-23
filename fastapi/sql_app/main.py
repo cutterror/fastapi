@@ -15,7 +15,9 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
-    "http://localhost:4200",
+    "http://localhost",
+    "http://localhost:4200/",
+    "http://localhost:4200"
 ]
 
 app.add_middleware(
@@ -147,18 +149,18 @@ def read_students(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)):
     db_student = crud.get_student_by_email(db, email=student.email)
     if db_student:
-        raise HTTPException(status_code=400, detail="Email already registered")
+        raise HTTPException(status_code=400, detail="Данный email уже используется")
     return crud.create_student(db=db, student=student)
 
 
-@app.post("/student/login", response_model=schemas.Student)
-def login_student(student: schemas.StudentCreate, db: Session = Depends(get_db)):
+@app.post("/student/signin", response_model=schemas.Student)
+def login_student(student: schemas.StudentLogIn, db: Session = Depends(get_db)):
     db_student = crud.get_student_by_email(db, email=student.email)
-    if db_student:
-        raise HTTPException(status_code=400, detail="Email not registered")
+    if not db_student:
+        raise HTTPException(status_code=400, detail="Аккаунта с данным email не существует")
     if db_student.hashed_password != (student.password + "notreallyhashed"):
-        raise HTTPException(status_code=400, detail="Uncorrect password")
-    return crud.create_student(db=db, student=student)
+        raise HTTPException(status_code=400, detail="Неверный пароль")
+    return db_student
 
 
 @app.put("/students/{student_id}", response_model=schemas.Student)

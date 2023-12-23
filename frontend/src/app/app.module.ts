@@ -7,9 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { RouterOutlet } from '@angular/router';
-import { TuiModeModule, TuiRootModule } from '@taiga-ui/core';
+import { TuiErrorModule, TuiModeModule, TuiRootModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { AuthComponent } from './components/auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TuiInputModule } from '@taiga-ui/kit';
 
 const components = [
     AppComponent,
@@ -29,7 +30,10 @@ const components = [
         TuiRootModule,
         TuiModeModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        TuiErrorModule
     ],
     providers: [
         WebSocketService

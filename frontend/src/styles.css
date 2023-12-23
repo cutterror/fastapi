@@ -1,5 +1,11 @@
+/*taiga vars*/
+:root {
+    --tui-base-01: #081012;
+}
+
 body {
     margin: 0;
+    background-color: #081012 !important;
 }
 
 a {
@@ -26,9 +32,4 @@ img {
 
 :active, :hover, :focus {
     outline: 0;
-}
-
-/*taiga vars*/
-:root {
-    --tui-base-01: #081012;
 }
