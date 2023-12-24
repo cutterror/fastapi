@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DestroyableComponent } from '../destroyable-component/destroyable.component';
 import { AuthService } from '../../services/auth.service';
-import { Student } from '../../models/student.model';
+import { StudentModel } from '../../models/student.model';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./header.css']
 })
 export class HeaderComponent extends DestroyableComponent implements OnInit {
-    public student: Student | null = null;
+    public student: StudentModel | null = null;
 
     constructor(
         public authService: AuthService

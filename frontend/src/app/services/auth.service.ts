@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CreateStudent, SignInStudent, Student } from '../models/student.model';
+import { CreateStudent, SignInStudent, StudentModel } from '../models/student.model';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     providedIn: 'root'
 })
 export class AuthService {
-    public student$: BehaviorSubject<Student | null> = new BehaviorSubject<Student | null>(null);
+    public student$: BehaviorSubject<StudentModel | null> = new BehaviorSubject<StudentModel | null>(null);
 
     private signInUrl = 'http://127.0.0.1:8000/student/signin';
     private signUpUrl = 'http://127.0.0.1:8000/students/';
@@ -18,7 +18,7 @@ export class AuthService {
         private router: Router
     ) {
         if (localStorage['id']) {
-            this.student$.next(<Student>{
+            this.student$.next(<StudentModel>{
                 id: localStorage['id'],
                 name: localStorage['name'],
                 email: localStorage['email']

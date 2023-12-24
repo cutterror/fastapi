@@ -7,7 +7,7 @@ export interface CreateStudent extends SignInStudent {
     name: string;
 }
 
-export interface Student {
+export interface StudentModel {
     email: string;
     name: string;
     subjects: any[];

@@ -113,8 +113,26 @@ def read_subjects(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
     return subjects
 
 
+@app.get("/subjects/students/{student_id}", response_model=list[schemas.Subject])
+def read_student_subjects(student_id: int, db: Session = Depends(get_db)):
+    db_subject = crud.get_student_subjects(db, student_id=student_id)
+    return db_subject
+
+
+@app.get("/subjects/students/{student_id}/teachers", response_model=list[schemas.Teacher])
+def read_student_teacher_subject(student_id: int, db: Session = Depends(get_db)):
+    db_subject = crud.get_student_teachers_subjects(db, student_id=student_id)
+    return db_subject
+
+
+@app.get("/subjects/teachers/{teacher_id}", response_model=list[schemas.Subject])
+def read_student_subjects(teacher_id: int, db: Session = Depends(get_db)):
+    db_subject = crud.get_teacher_subjects(db, teacher_id=teacher_id)
+    return db_subject
+
+
 @app.post("/students/{student_id}/teachers/{teacher_id}/subjects/", response_model=schemas.Subject)
-def create_subject_for_student(
+def create_subject_for_student_teacher(
     student_id: int, teacher_id: int, subject: schemas.SubjectCreate, db: Session = Depends(get_db)
 ):
     return crud.create_student_teacher_subject(db=db, subject=subject, student_id=student_id, teacher_id=teacher_id)

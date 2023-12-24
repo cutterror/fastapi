@@ -48,6 +48,38 @@ def get_subjects(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Subject).offset(skip).limit(limit).all()
 
 
+def get_student_subjects(db: Session, student_id: int):
+    return db.query(models.Subject).filter(models.Subject.student_id == student_id).all()
+
+
+def get_subject_teacher(db: Session, subject: models.Subject):
+    teacher: models.Teacher = db.query(models.Teacher).filter(models.Teacher.id == subject.teacher_id).first()
+    return {
+        "id": teacher.id,
+        "name": teacher.name,
+        "description": teacher.description,
+        "email": teacher.email,
+        "subjects": [subject]
+    }
+
+
+def get_student_teachers_subjects(db: Session, student_id: int):
+    subjects = db.query(models.Subject).filter(models.Subject.student_id == student_id).all()
+    return list(map(lambda x: get_subject_teacher(db, x), subjects))
+
+
+def get_teacher_subjects(db: Session, teacher_id: int):
+    return db.query(models.Subject).filter(models.Subject.teacher_id == teacher_id).all()
+
+
+def create_student_subject(db: Session, subject: schemas.SubjectCreate, student_id: int):
+    db_subject = models.Subject(**subject.dict(), student_id=student_id)
+    db.add(db_subject)
+    db.commit()
+    db.refresh(db_subject)
+    return db_subject
+
+
 def create_student_teacher_subject(db: Session, subject: schemas.SubjectCreate, student_id: int, teacher_id: int):
     db_subject = models.Subject(**subject.dict(), student_id=student_id, teacher_id=teacher_id)
     db.add(db_subject)

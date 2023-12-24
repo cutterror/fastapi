@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SubjectModel } from '../../models/subject.model';
 import { HttpClient } from '@angular/common/http';
+import { TeacherModel } from '../../models/teacher.model';
 
 @Component({
     selector: 'app-subjects-list',
@@ -8,12 +8,9 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./subjects-list.css']
 })
 export class SubjectsListComponent implements OnInit {
-    public subjects: SubjectModel[] = [];
+    public teachers: TeacherModel[] = [];
 
     private readonly backendUrl: string = 'http://127.0.0.1:8000';
-
-    // private teacherId = 534;
-    // private studentId = 234;
 
     constructor(
         protected http: HttpClient
@@ -21,9 +18,8 @@ export class SubjectsListComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.http.get(`${this.backendUrl}/subjects/`).subscribe((response: any) => {
-            console.log(response);
-            this.subjects = response;
+        this.http.get(`${this.backendUrl}/subjects/students/${localStorage['id']}/teachers`).subscribe((response: any) => {
+            this.teachers = <TeacherModel[]>response;
         });
     }
 }

@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiSizeL, TuiSizeM, TuiSizeS } from '@taiga-ui/core';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Student } from '../../models/student.model';
+import { StudentModel } from '../../models/student.model';
 import { Router } from '@angular/router';
 
 type Titles = 'Зарегистрироваться' | 'Войти в аккаунт';
@@ -64,7 +64,7 @@ export class AuthComponent extends DestroyableComponent implements OnInit {
         const postObs = this.isSignIn ? this.authService.signIn(data) : this.authService.signUp(data);
         postObs.subscribe((response) => {
             if (response) {
-                const student: any = <Student>response;
+                const student: any = <StudentModel>response;
                 localStorage['id'] = student?.id;
                 localStorage['name'] = student?.name;
                 localStorage['email'] = student?.email;
