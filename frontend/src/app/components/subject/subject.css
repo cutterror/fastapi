@@ -185,3 +185,7 @@ label {
     margin-right: 15px;
     margin-bottom: 0 !important;
 }
+
+.homework-disabled {
+    pointer-events: none;
+}

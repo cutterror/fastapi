@@ -39,7 +39,7 @@ export class SubjectComponent implements OnInit {
 
     public onHomeworkClick(): void {
         if (this.subject.homeworks?.length && !this.isDisabled) {
-            this.isHomeworkOpen = !this.isHomeworkOpen;
+            this.isHomeworkOpen = true;
         } else {
             this.addHomework();
         }

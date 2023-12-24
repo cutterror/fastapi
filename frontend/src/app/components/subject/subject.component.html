@@ -24,7 +24,7 @@
             <div class="add-homework-btn"></div>
         </ng-template>
     </div>
-    <div class="homeworks" *ngIf="isHomeworkOpen">
+    <div class="homeworks" *ngIf="isHomeworkOpen" [ngClass]="isHomeworkDialogOpen ? 'homework-disabled' : ''">
         <div class="homework" *ngFor="let homework of subject.homeworks">
             <h2>{{homework.title}}</h2>
             <p>{{homework.description}}</p>
