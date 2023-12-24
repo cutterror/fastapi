@@ -55,7 +55,7 @@ p.homework-title {
     cursor: pointer;
 }
 
-.homework-toggling:hover {
+.homework-toggling:hover, .homework-adding:hover {
     background: rgba(55, 69, 91, 0.75);
 }
 
@@ -106,5 +106,82 @@ p.homework-title {
 
 .homework-footer * {
     display: block;
+    margin-bottom: 0 !important;
+}
+
+.add-homework-btn {
+    width: 20px;
+    height: 20px;
+    background: url('src/assets/plus.svg') no-repeat;
+    background-size: 20px;
+    cursor: pointer;
+}
+
+form {
+    margin-top: 25px;
+}
+
+tui-input, tui-input-date {
+    margin-bottom: 15px;
+}
+
+form button {
+    padding: 5px 8px;
+    margin: 30px auto 0 auto;
+    width: 200px;
+    font-size: 18px;
+    font-weight: 500;
+    border: white 1px solid;
+    border-radius: 15px;
+    display: block;
+}
+
+form button:hover {
+    border: #c9dde8 1px solid;
+}
+
+form button:active {
+    border: #92b8cc 1px solid;
+}
+
+form h2 {
+    text-align: center;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+tui-checkbox {
+    margin-right: 15px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group * {
+    display: block;
+}
+
+.checkbox-group p {
+    font-size: 14px;
+}
+
+label {
+    font-size: 14px;
+    padding-bottom: 7px;
+}
+
+.homework-adding {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.homework-adding p {
+    margin-right: 15px;
     margin-bottom: 0 !important;
 }

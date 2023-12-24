@@ -11,16 +11,18 @@
     <p class="teacher">Преподаватель:&nbsp;&nbsp;&nbsp;{{teacher.name}}</p>
     <hr>
     <div
-            class="homework-header"
-            [ngClass]="subject.homeworks?.length ? 'homework-toggling' : ''"
-            (click)="toggleHomeworkOpening()"
+            class="homework-header homework-toggling"
+            (click)="onHomeworkClick()"
     >
         <p class="homework-title">Домашнее задачание{{subject.homeworks?.length ? ':' : ' - не задано'}}</p>
         <div
                 [ngClass]="isHomeworkOpen ? 'homework-toggle-btn-open' : 'homework-toggle-btn-close'"
-                *ngIf="subject.homeworks?.length"
+                *ngIf="subject.homeworks?.length; else addHomeworkBtn"
                 class="homework-toggle-btn"
         ></div>
+        <ng-template #addHomeworkBtn>
+            <div class="add-homework-btn"></div>
+        </ng-template>
     </div>
     <div class="homeworks" *ngIf="isHomeworkOpen">
         <div class="homework" *ngFor="let homework of subject.homeworks">
@@ -31,9 +33,56 @@
                 <p>{{homework.is_done ? 'Выполнено' : 'Не выполнено'}}</p>
             </div>
         </div>
+        <div class="homework-adding" (click)="addHomework()">
+            <p>Добавить домашнее задание</p>
+            <div class="add-homework-btn"></div>
+        </div>
     </div>
 </div>
 
 <ng-template #noMark>
     <p class="no-mark">Не оценено</p>
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="isHomeworkDialogOpen"
+>
+    <h2>Введите домашнее задание:</h2>
+    <form
+            [formGroup]="homeworkForm"
+            (ngSubmit)="observer.complete()"
+    >
+        <tui-input formControlName="title" tuiTextfieldSize="m">
+            Название задания
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="description" tuiTextfieldSize="m">
+            Описание задания
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <label>Крайний срок для задания</label>
+        <tui-input formControlName="deadline" tuiTextfieldSize="s">
+            <input
+                    tuiTextfield
+                    type="date"
+            />
+        </tui-input>
+        <div class="checkbox-group">
+            <tui-checkbox
+                    formControlName="is_done"
+                    size="m"
+            >
+            </tui-checkbox>
+            <p>Задание уже сдано</p>
+        </div>
+        <button (click)="sendHomework()">Добавить</button>
+    </form>
 </ng-template>
