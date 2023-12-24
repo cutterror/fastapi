@@ -1,20 +1,7 @@
 <ul *ngIf="teachers.length; else noSubjects">
     <ng-container *ngFor="let teacher of teachers">
         <li *ngFor="let subject of teacher.subjects"  class="subject-container">
-            <div class="subject-header">
-                <h2>{{subject.title}}</h2>
-                <p *ngIf="subject.mark; else noMark">
-                    {{subject.isGrade ? 'Оценка:' : ''}}
-                    &nbsp;&nbsp;&nbsp;
-                    <em>{{subject.isGrade ? subject.mark : subject.mark > 3 ? 'Зачет' : 'Незачет'}}</em>
-                </p>
-            </div>
-            <div class="subject-body">
-                <p>{{subject.description}}</p>
-                <p class="teacher">Преподаватель:&nbsp;&nbsp;&nbsp;{{teacher.name}}</p>
-                <hr>
-                <p class="homework-title">Домашнее задачание{{subject.homeworks?.length ? ':' : ' - не задано'}}</p>
-            </div>
+            <app-subject [subject]="subject" [teacher]="teacher"></app-subject>
         </li>
     </ng-container>
 </ul>
@@ -25,8 +12,4 @@
             <h2>Для вас еще не добавлено ни предметов, ни преподавателей</h2>
         </div>
     </div>
-</ng-template>
-
-<ng-template #noMark>
-    <p class="no-mark">Не оценено</p>
 </ng-template>

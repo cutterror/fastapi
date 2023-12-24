@@ -1,0 +1,110 @@
+.subject-header {
+    padding: 30px 25px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subject-header * {
+    display: block;
+}
+
+.subject-header h2 {
+    font-size: 26px;
+}
+
+.subject-header p {
+    font-size: 22px;
+    display: flex;
+}
+
+.subject-mark {
+    display: flex;
+}
+
+.subject-body {
+    padding: 0 40px 20px;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.subject-body p {
+    margin-bottom: 20px;
+}
+
+.teacher {
+    font-size: 18px;
+}
+
+p.homework-title {
+    margin-bottom: 0 !important;
+}
+
+.homework-header {
+    border-radius: 15px;
+    margin: 10px 0 0 0;
+    padding: 5px 10px;
+}
+
+.no-mark {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.homework-toggling {
+    cursor: pointer;
+}
+
+.homework-toggling:hover {
+    background: rgba(55, 69, 91, 0.75);
+}
+
+.homework-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.homework-toggle-btn {
+    width: 20px;
+    height: 13px;
+}
+
+.homework-toggle-btn-close {
+    background: url('src/assets/arrow_to_bottom.svg') no-repeat;
+}
+
+.homework-toggle-btn-open {
+    background: url('src/assets/arrow_to_top.svg') no-repeat;
+}
+
+.homeworks {
+    margin-top: 20px;
+}
+
+.homework {
+    padding: 20px 25px;
+    border: white 1px solid;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.homeworks .homework:last-child {
+    margin-bottom: 10px;
+}
+
+.homework h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.homework-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homework-footer * {
+    display: block;
+    margin-bottom: 0 !important;
+}

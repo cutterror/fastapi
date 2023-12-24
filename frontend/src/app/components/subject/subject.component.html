@@ -1,0 +1,39 @@
+<div class="subject-header">
+    <h2>{{subject.title}}</h2>
+    <p *ngIf="subject.mark; else noMark">
+        {{subject.isGrade ? 'Оценка:' : ''}}
+        &nbsp;&nbsp;&nbsp;
+        <em>{{subject.isGrade ? subject.mark : subject.mark > 3 ? 'Зачет' : 'Незачет'}}</em>
+    </p>
+</div>
+<div class="subject-body">
+    <p>{{subject.description}}</p>
+    <p class="teacher">Преподаватель:&nbsp;&nbsp;&nbsp;{{teacher.name}}</p>
+    <hr>
+    <div
+            class="homework-header"
+            [ngClass]="subject.homeworks?.length ? 'homework-toggling' : ''"
+            (click)="toggleHomeworkOpening()"
+    >
+        <p class="homework-title">Домашнее задачание{{subject.homeworks?.length ? ':' : ' - не задано'}}</p>
+        <div
+                [ngClass]="isHomeworkOpen ? 'homework-toggle-btn-open' : 'homework-toggle-btn-close'"
+                *ngIf="subject.homeworks?.length"
+                class="homework-toggle-btn"
+        ></div>
+    </div>
+    <div class="homeworks" *ngIf="isHomeworkOpen">
+        <div class="homework" *ngFor="let homework of subject.homeworks">
+            <h2>{{homework.title}}</h2>
+            <p>{{homework.description}}</p>
+            <div class="homework-footer">
+                <p>Необходимо выполнить до&nbsp;&nbsp;&nbsp;{{homework.deadline}}</p>
+                <p>{{homework.is_done ? 'Выполнено' : 'Не выполнено'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noMark>
+    <p class="no-mark">Не оценено</p>
+</ng-template>

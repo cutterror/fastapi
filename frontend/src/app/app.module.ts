@@ -13,13 +13,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { TuiInputModule } from '@taiga-ui/kit';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SubjectComponent } from './components/subject/subject.component';
 
 const components = [
     AppComponent,
     SubjectsListComponent,
     AuthComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    SubjectComponent
 ]
 
 @NgModule({
