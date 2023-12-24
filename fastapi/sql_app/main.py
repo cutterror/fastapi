@@ -52,7 +52,7 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             # Receive the JSON data sent by a client.
             data = await websocket.receive_json()
-            message_processed = data.get("message", "").upper()
+            message_processed = data.get("message", "")
             # Send JSON data to the client.
             await websocket.send_json(
                 {
@@ -135,7 +135,9 @@ def read_student_subjects(teacher_id: int, db: Session = Depends(get_db)):
 def create_subject_for_student_teacher(
     student_id: int, teacher_id: int, subject: schemas.SubjectCreate, db: Session = Depends(get_db)
 ):
-    return crud.create_student_teacher_subject(db=db, subject=subject, student_id=student_id, teacher_id=teacher_id)
+    db_subject = crud.create_student_teacher_subject(db=db, subject=subject, student_id=student_id, teacher_id=teacher_id)
+    manager.broadcast(db_subject)
+    return db_subject
 
 
 @app.put("/subjects/{subject_id}", response_model=schemas.Subject)

@@ -3,6 +3,7 @@ import { DestroyableComponent } from '../../directives/destroyable.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TeacherModel } from '../../models/teacher.model';
+import { WebSocketService } from '../../services/web-socket.service';
 
 @Component({
     selector: 'app-edit-footer',
@@ -37,7 +38,8 @@ export class EditFooterComponent extends DestroyableComponent implements OnInit 
     private studentId: string = localStorage['id'];
 
     constructor(
-        public http: HttpClient
+        private http: HttpClient,
+        private websocket: WebSocketService
     ) {
         super();
     }
@@ -61,7 +63,9 @@ export class EditFooterComponent extends DestroyableComponent implements OnInit 
     public sendTeacher(): void {
         const data = this.teacherForm.value;
         this.http.post(`${this.backendUrl}/teachers/`, data)
-            .subscribe((response) => console.log(response));
+            .subscribe((response) => {
+                console.log(response);
+            });
     }
 
     public sendSubject(): void {
@@ -70,6 +74,10 @@ export class EditFooterComponent extends DestroyableComponent implements OnInit 
             .find((teacher: TeacherModel) => teacher.name === teacherName)?.id;
         const data = this.subjectForm.value;
         this.http.post(`${this.backendUrl}/students/${this.studentId}/teachers/${teacherId}/subjects/`, data)
-            .subscribe((response) => console.log(response));
+            .subscribe((response) => {
+                // отправляем изменение всем активным клиентам
+                this.websocket.sendMessage(response);
+                console.log(response);
+            });
     }
 }
