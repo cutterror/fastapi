@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DestroyableComponent } from '../destroyable-component/destroyable.component';
+import { DestroyableComponent } from '../../directives/destroyable.component';
 import { AuthService } from '../../services/auth.service';
 import { StudentModel } from '../../models/student.model';
 import { takeUntil } from 'rxjs';

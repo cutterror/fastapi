@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DestroyableComponent } from '../destroyable-component/destroyable.component';
+import { DestroyableComponent } from '../../directives/destroyable.component';
 
 @Component({
     selector: 'app-home',

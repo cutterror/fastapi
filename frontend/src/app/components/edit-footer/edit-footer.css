@@ -1,0 +1,75 @@
+.container {
+    background-color: var(--tui-base-01);
+    border-radius: 15px;
+    margin: 10px auto;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: #fff;
+    padding: 10px 20px;
+    /*width: 600px;*/
+}
+
+button {
+    font-size: 18px;
+    font-weight: 500;
+    border: white 1px solid;
+    border-radius: 15px;
+    padding: 5px 15px;
+    margin-right: 70px;
+    display: block;
+    width: 230px;
+}
+
+button:hover {
+    border: #c9dde8 1px solid;
+}
+
+button:active {
+    border: #92b8cc 1px solid;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button:last-child {
+    margin-right: 0;
+}
+
+form {
+    margin-top: 25px;
+}
+
+tui-input {
+    margin-bottom: 15px;
+}
+
+form button {
+    padding: 5px 8px;
+    margin: 30px auto 0 auto;
+    width: 200px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+tui-checkbox {
+    margin-right: 15px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group * {
+    display: block;
+}
+
+.checkbox-group p {
+    font-size: 14px;
+}

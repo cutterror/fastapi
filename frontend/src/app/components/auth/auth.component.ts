@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DestroyableComponent } from '../destroyable-component/destroyable.component';
+import { DestroyableComponent } from '../../directives/destroyable.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiSizeL, TuiSizeM, TuiSizeS } from '@taiga-ui/core';
 import { AuthService } from '../../services/auth.service';

@@ -7,13 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { RouterOutlet } from '@angular/router';
-import { TuiErrorModule, TuiModeModule, TuiRootModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+    TuiDialogModule,
+    TuiErrorModule,
+    TuiModeModule,
+    TuiRootModule,
+    TuiTextfieldControllerModule
+} from '@taiga-ui/core';
 import { AuthComponent } from './components/auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiCheckboxModule, TuiDataListWrapperModule, TuiInputModule, TuiSelectModule } from '@taiga-ui/kit';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SubjectComponent } from './components/subject/subject.component';
+import { EditFooterComponent } from './components/edit-footer/edit-footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const components = [
     AppComponent,
@@ -21,7 +29,8 @@ const components = [
     AuthComponent,
     HomeComponent,
     HeaderComponent,
-    SubjectComponent
+    SubjectComponent,
+    EditFooterComponent
 ]
 
 @NgModule({
@@ -39,10 +48,15 @@ const components = [
         ReactiveFormsModule,
         TuiInputModule,
         TuiTextfieldControllerModule,
-        TuiErrorModule
+        TuiErrorModule,
+        TuiDialogModule,
+        BrowserAnimationsModule,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        TuiCheckboxModule
     ],
     providers: [
-        WebSocketService
+        WebSocketService,
     ],
     bootstrap: [AppComponent]
 })

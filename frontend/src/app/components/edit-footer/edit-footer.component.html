@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="buttons">
+        <button (click)="addTeacher()">Добавить преподавателя</button>
+        <button (click)="addSubject()">Добавить предмет</button>
+    </div>
+</div>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="isTeacherDialogOpen"
+>
+    <h2>Введите данные преподавателя:</h2>
+    <form
+            [formGroup]="teacherForm"
+            (ngSubmit)="observer.complete()"
+    >
+        <tui-input formControlName="name" tuiTextfieldSize="m">
+            Имя преподавателя
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="email" tuiTextfieldSize="m">
+            Email
+            <input
+                    tuiTextfield
+                    type="email"
+            />
+        </tui-input>
+        <tui-input formControlName="description" tuiTextfieldSize="m">
+            Описание
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <button (click)="sendTeacher()">Добавить</button>
+    </form>
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="isSubjectDialogOpen"
+>
+    <h2>Введите данные по предмету:</h2>
+    <form [formGroup]="teacherSubjectForm">
+        <tui-select
+                tuiTextfieldSize="m"
+                formControlName="teacher"
+        >
+            Преподаватель
+            <input
+                    placeholder="Выберите преподавателя"
+                    tuiTextfield
+            />
+            <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="teacherNames"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </form>
+    <form
+            [formGroup]="subjectForm"
+            (ngSubmit)="observer.complete()"
+    >
+        <tui-input formControlName="title" tuiTextfieldSize="m">
+            Название предмета
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="description" tuiTextfieldSize="m">
+            Описание предмета
+            <input
+                    tuiTextfield
+                    type="text"
+            />
+        </tui-input>
+        <tui-input formControlName="mark" tuiTextfieldSize="m">
+            Оценка за предмет
+            <input
+                    tuiTextfield
+                    type="number"
+            />
+        </tui-input>
+        <div class="checkbox-group">
+            <tui-checkbox
+                    formControlName="isGrade"
+                    size="m"
+            >
+            </tui-checkbox>
+            <p>За предмет ставится оценка</p>
+        </div>
+        <button (click)="sendSubject()">Добавить</button>
+    </form>
+</ng-template>
