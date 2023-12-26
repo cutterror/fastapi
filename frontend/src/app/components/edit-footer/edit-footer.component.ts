@@ -34,7 +34,7 @@ export class EditFooterComponent extends DestroyableComponent implements OnInit 
     public possibleTeachers: TeacherModel[] = [];
     public teacherNames: string[] = [];
 
-    private readonly backendUrl: string = 'http://127.0.0.1:8000';
+    private readonly backendUrl: string = 'https://fastapi--strongfoxspirit.repl.co';
     private studentId: string = localStorage['id'];
 
     constructor(

@@ -12,7 +12,7 @@ export class SubjectsListComponent implements OnInit {
     public teachers: TeacherModel[] = [];
     public isShowMessage: boolean = false;
 
-    private readonly backendUrl: string = 'http://127.0.0.1:8000';
+    private readonly backendUrl: string = 'https://fastapi--strongfoxspirit.repl.co';
 
     constructor(
         protected http: HttpClient,

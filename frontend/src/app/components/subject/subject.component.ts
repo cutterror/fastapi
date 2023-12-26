@@ -25,7 +25,7 @@ export class SubjectComponent implements OnInit {
         'is_done': new FormControl(false),
     });
 
-    private readonly backendUrl: string = 'http://127.0.0.1:8000';
+    private readonly backendUrl: string = 'https://fastapi--strongfoxspirit.repl.co';
 
     constructor(
         private http: HttpClient,

@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
     public student$: BehaviorSubject<StudentModel | null> = new BehaviorSubject<StudentModel | null>(null);
 
-    private signInUrl = 'http://127.0.0.1:8000/student/signin';
-    private signUpUrl = 'http://127.0.0.1:8000/students/';
+    private signInUrl = 'https://fastapi--strongfoxspirit.repl.co/student/signin';
+    private signUpUrl = 'https://fastapi--strongfoxspirit.repl.co/students/';
 
     constructor(
         private http: HttpClient,

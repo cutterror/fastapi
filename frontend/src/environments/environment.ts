@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    webSocketUrl: 'ws://localhost:8000/ws',
+    webSocketUrl: 'ws://fastapi--strongfoxspirit.repl.co/ws',
 };
