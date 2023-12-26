@@ -36,4 +36,4 @@
 
 `ng s --open` в директории 'frontend' (флаг open, автоматически откроет вкладку в браузере)
 
-`uvicorn sql_app.main:app --reload` в директории 'fastapi'
+`python .\main.py` в директории 'fastapi'

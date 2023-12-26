@@ -3,16 +3,18 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 import logging
 
-from . import crud, models, schemas
-from .connection_manager import ConnectionManager
-from .database import SessionLocal, engine
+import schemas
+import crud
+import models
+from connection_manager import ConnectionManager
+from database import SessionLocal, engine
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("FastAPI app")
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(title="StudentDiary", summary="Student diary for you")
 
 origins = [
     "http://localhost",
@@ -221,3 +223,9 @@ def update_teacher(teacher_id: int, teacher: schemas.TeacherCreate, db: Session 
 @app.delete("/teachers/{teacher_id}", response_model=schemas.Teacher)
 def delete_teacher(teacher_id: int, db: Session = Depends(get_db)):
     return crud.delete_teacher(db=db, teacher_id=teacher_id)
+
+
+if __name__ == '__main__':
+    import uvicorn
+
+    uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True)
