@@ -26,7 +26,6 @@ export class SubjectComponent implements OnInit {
     });
 
     private readonly backendUrl: string = 'http://127.0.0.1:8000';
-    private isDisabled: boolean = false;
 
     constructor(
         private http: HttpClient,
@@ -38,22 +37,18 @@ export class SubjectComponent implements OnInit {
     }
 
     public onHomeworkClick(): void {
-        if (this.subject.homeworks?.length && !this.isDisabled) {
-            this.isHomeworkOpen = true;
+        if (this.subject.homeworks?.length) {
+            this.isHomeworkOpen = !this.isHomeworkOpen;
         } else {
             this.addHomework();
         }
     }
 
     public addHomework(): void {
-        if (this.isDisabled) {
-            return;
-        }
         this.isHomeworkDialogOpen = true;
     }
 
     public sendHomework(): void {
-        this.isDisabled = true;
         const subjectId = this.subject.id;
         const data = this.homeworkForm.value;
         this.http.post(`${this.backendUrl}/subjects/${subjectId}/homeworks`, data)
@@ -61,7 +56,6 @@ export class SubjectComponent implements OnInit {
                 this.isHomeworkOpen = true;
                 this.subject.homeworks?.push(<HomeworkModel>response);
                 this.webSocketService.sendMessage(response);
-                this.isDisabled = false;
             });
     }
 }
