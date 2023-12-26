@@ -2,6 +2,9 @@
 
 Демина Анастасия Викторовна РИ-310942
 
+https://studentdiaryd.onrender.com/
+https://fastapi.strongfoxspirit.repl.co/
+
 ## Это -
 
 Учебный проект с бэкендом на fast API и фронтендом на Angular.
