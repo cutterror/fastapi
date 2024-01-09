@@ -51,7 +51,7 @@ export class SubjectComponent implements OnInit {
     public sendHomework(): void {
         const subjectId = this.subject.id;
         const data = this.homeworkForm.value;
-        this.http.post(`${this.backendUrl}/subjects/${subjectId}/homeworks`, data)
+        this.http.post(`${this.backendUrl}/subjects/${subjectId}/homeworks/`, data)
             .subscribe((response) => {
                 this.isHomeworkOpen = true;
                 this.subject.homeworks?.push(<HomeworkModel>response);
