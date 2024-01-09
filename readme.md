@@ -2,8 +2,8 @@
 
 Демина Анастасия Викторовна РИ-310942
 
-https://studentdiaryd.onrender.com/
-https://fastapi.strongfoxspirit.repl.co/
+Angular https://studentdiaryd.onrender.com/
+FastAPI https://2c2d3343-c262-4f72-99af-16ca0546bbc6-00-39iswdjpx6x14.sisko.replit.dev/
 
 ## Это -
 
